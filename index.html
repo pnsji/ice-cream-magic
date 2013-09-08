@@ -6,23 +6,24 @@
   <script>
     function calculate()
     {
-      alert("Here is where we should calculate the answer");
+      var answers = "flavor: " + document.perfect_ice_cream.flavor.value;
+      alert(answers);
     }
   </script>
   <body>
     <h1>
     </h1>
-    <form>
-      <p>Which Flavor? <input type=\"text\" name="flavor" size="25" value="vanilla"/></p>
+    <form name="perfect_ice_cream">
+      <p>Which Flavor? <input type="text" name="flavor" size="25" value="vanilla"/></p>
       <p>Dairy?<br>
-        Milk percentage <input type=\"text\" name="milk" size="3"/><br>
-        Cream percentage <input type=\"text\" name="cream" size="3"/><br>
+        Milk percentage <input type="text" name="milk" size="3"/><br>
+        Cream percentage <input type="text" name="cream" size="3"/><br>
         Egg yolk <label><input type="radio" name="Egg_yolk" value="yes"/>
         Yes</label>
         <label><input type="radio" name="Egg_yolk" value="no"/>
         No</label>
       </p>
     </form>
-    <button onclick="calculate">Calculate</button>
+    <button onclick="calculate()">Calculate</button>
   </body>
 </html>
