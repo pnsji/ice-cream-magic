@@ -6,6 +6,8 @@
   <script>
     function calculate()
     {
+      var debug_mode = true;
+      
       var milk_percentage = 0;
       if(document.perfect_ice_cream.milk.value)
       { 
@@ -23,8 +25,25 @@
       var milkcomposition = milk_percentage + cream_percentage;
       if(milkcomposition != 100)
         alert("Sorry player, your dairy composition is not 100%");
-      var answers = "flavor: " + document.perfect_ice_cream.flavor.value;
-      alert(answers);
+      
+      var egg_yolk = false;
+      alert(document.perfect_ice_cream.egg_yolk[0].checked);
+      alert(document.perfect_ice_cream.egg_yolk[1].checked);
+      if (document.perfect_ice_cream.egg_yolk[0].checked || document.perfect_ice_cream.egg_yolk[1].checked)
+      {
+        egg_yolk = document.perfect_ice_cream.egg_yolk[0].checked == true ? true : false;
+      }
+      else
+        alert("Sorry, please specify egg yolk");
+        
+      if (debug_mode)
+      {
+        var user_input = "flavor: " + document.perfect_ice_cream.flavor.value + "\n";
+        user_input += "milk percentage is: " + milk_percentage + "\n";
+        user_input += "cream percentage is: " + cream_percentage + "\n";
+        user_input += "egg yolk is: " + egg_yolk + "\n";
+        alert(user_input);
+      }
     }
   </script>
   <body>
@@ -33,11 +52,12 @@
     <form name="perfect_ice_cream">
       <p>Which Flavor? <input type="text" name="flavor" size="25" value="vanilla"/></p>
       <p>Dairy?<br>
-        Milk percentage <input type= "number" name="milk" size="3"/><br>
-        Cream percentage <input type="number" name="cream" size="3"/><br>
-        Egg yolk <label><input type="radio" name="Egg_yolk" value="yes"/>
+        Milk percentage <input type= "number" name="milk" size="3"/> percentage<br>
+        Cream percentage <input type="number" name="cream" size="3"/> percentage<br>
+      </p>
+      <p>Egg yolk <label><input type="radio" name="egg_yolk" value="yes"/>
         Yes</label>
-        <label><input type="radio" name="Egg_yolk" value="no"/>
+        <label><input type="radio" name="egg_yolk" value="no"/>
         No</label>
       </p>
     </form>
