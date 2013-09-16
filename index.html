@@ -41,7 +41,7 @@
 
       var milkcomposition = milk_percentage + cream_percentage;
       if(milkcomposition != 100)
-        alert("Sorry player, your dairy composition is not 100%");
+        throw("Sorry player, your dairy composition is not 100%");
       
       var egg_yolk = false;
       //alert(document.perfect_ice_cream.egg_yolk[0].checked);
@@ -51,7 +51,7 @@
         egg_yolk = document.perfect_ice_cream.egg_yolk[0].checked == true ? true : false;
       }
       else
-        alert("Sorry, please specify egg yolk");
+        throw("Sorry, please specify egg yolk");
       
       var flavor = document.perfect_ice_cream.flavor.value;
       var ice_cream = new IceCream (flavor, milk_percentage, cream_percentage, egg_yolk);
@@ -90,8 +90,13 @@
     
     function main()
     {
-      var ice_cream = parse_input();
-      update(ice_cream);
+      try {
+        var ice_cream = parse_input();
+        update(ice_cream);
+      }
+      catch (err) {
+        alert(err);
+      }
     }
     
   </script>
