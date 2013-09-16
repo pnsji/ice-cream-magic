@@ -4,7 +4,7 @@
     <title>ICF</title>
   </head>
   <script>
-      
+
     function IceCream (_flavor, _milk_percentage, _cream_percentage, _egg_yolk) {
       this.flavor           = "vanilla"
       this.milk_percentage  = _milk_percentage;
@@ -19,6 +19,31 @@
       user_input += "cream percentage is: " + this.cream_percentage + "\n";
       user_input += "egg yolk is: " + this.egg_yolk + "\n";
       return user_input;
+    }
+    
+    function Sweetener(_type, _sweet_p, _anti_f, _mol_wt, _solid, _h20, _max) {
+      this.type     = _type;
+      this.sweet_p  = _sweet_p;
+      this.anti_f   = _anti_f;
+      this.mol_wt   = _mol_wt;
+      this.solid    = _solid;
+      this.h20      = _h20;
+      this.max      = _max;
+    }
+    
+    function initialize_sweetener()
+    {
+      var sweeteners = new Array();
+      
+      var sucrose       = new Sweetener("sucrose", 100,	100, 342, 100,	0, 100);
+      var invert_sugar  = new Sweetener("invert_sugar", 125, 190, 261, 75, 25, 30);
+      var glucose       = new Sweetener("glucose", 75, 190, 180, 92, 8, 40);
+      
+      sweeteners[0] = sucrose;
+      sweeteners[1] = invert_sugar;
+      sweeteners[2] = glucose;
+      
+      return sweeteners;
     }
 
     function parse_input()
@@ -58,6 +83,11 @@
       return ice_cream;
     }
     
+    function calculate_sugar(_ice_cream, _sweeteners)
+    {
+
+    }
+    
     function update(_ice_cream)
     {
 			var h = document.createElement('p');
@@ -93,6 +123,8 @@
       try {
         var ice_cream = parse_input();
         update(ice_cream);
+        sweeteners = initialize_sweetener();
+        calculate_sugar(ice_cream, sweeteners);
       }
       catch (err) {
         alert(err);
