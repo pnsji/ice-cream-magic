@@ -58,10 +58,40 @@
       return ice_cream;
     }
     
+    function update(_ice_cream)
+    {
+			var h = document.createElement('p');
+
+			var flavor_doc = document.createTextNode("Flavor: " + _ice_cream.flavor);
+			h.appendChild(flavor_doc);
+			var b1 = document.createElement('br');
+			h.appendChild(b1);
+			
+			var milk_doc = document.createTextNode("Milk Percentage: " + _ice_cream.milk_percentage);
+			h.appendChild(milk_doc);
+			var b2 = document.createElement('br');
+			h.appendChild(b2);
+			
+			var cream_doc = document.createTextNode("Cream Percentage: " + _ice_cream.cream_percentage);
+			h.appendChild(cream_doc);
+			var b3 = document.createElement('br');
+			h.appendChild(b3);
+			
+			egg_yolk = "Egg Yolk: ";
+			egg_yolk += _ice_cream.egg_yolk == true? "Yes" : "No";
+			var egg_yolk_doc = document.createTextNode(egg_yolk);
+			h.appendChild(egg_yolk_doc);
+			var b4 = document.createElement('br');
+			h.appendChild(b4);			
+
+			var resultElement = document.getElementById("result");			
+      resultElement.appendChild(h);
+    }
+    
     function main()
     {
       var ice_cream = parse_input();
-      alert(ice_cream.get_info());
+      update(ice_cream);
     }
     
   </script>
