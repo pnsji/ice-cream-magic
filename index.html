@@ -4,7 +4,24 @@
     <title>ICF</title>
   </head>
   <script>
-    function calculate()
+      
+    function IceCream (_flavor, _milk_percentage, _cream_percentage, _egg_yolk) {
+      this.flavor           = "vanilla"
+      this.milk_percentage  = _milk_percentage;
+      this.cream_percentage = _cream_percentage; 
+      this.egg_yolk         = _egg_yolk;
+      this.get_info         = get_info;
+    }
+    
+    function get_info() {
+      var user_input = "flavor: " + this.flavor + "\n";
+      user_input += "milk percentage is: " + this.milk_percentage + "\n";
+      user_input += "cream percentage is: " + this.cream_percentage + "\n";
+      user_input += "egg yolk is: " + this.egg_yolk + "\n";
+      return user_input;
+    }
+
+    function parse_input()
     {
       var debug_mode = true;
       
@@ -27,24 +44,26 @@
         alert("Sorry player, your dairy composition is not 100%");
       
       var egg_yolk = false;
-      alert(document.perfect_ice_cream.egg_yolk[0].checked);
-      alert(document.perfect_ice_cream.egg_yolk[1].checked);
+      //alert(document.perfect_ice_cream.egg_yolk[0].checked);
+      //alert(document.perfect_ice_cream.egg_yolk[1].checked);
       if (document.perfect_ice_cream.egg_yolk[0].checked || document.perfect_ice_cream.egg_yolk[1].checked)
       {
         egg_yolk = document.perfect_ice_cream.egg_yolk[0].checked == true ? true : false;
       }
       else
         alert("Sorry, please specify egg yolk");
-        
-      if (debug_mode)
-      {
-        var user_input = "flavor: " + document.perfect_ice_cream.flavor.value + "\n";
-        user_input += "milk percentage is: " + milk_percentage + "\n";
-        user_input += "cream percentage is: " + cream_percentage + "\n";
-        user_input += "egg yolk is: " + egg_yolk + "\n";
-        alert(user_input);
-      }
+      
+      var flavor = document.perfect_ice_cream.flavor.value;
+      var ice_cream = new IceCream (flavor, milk_percentage, cream_percentage, egg_yolk);
+      return ice_cream;
     }
+    
+    function main()
+    {
+      var ice_cream = parse_input();
+      alert(ice_cream.get_info());
+    }
+    
   </script>
   <body>
     <h1>
@@ -61,6 +80,8 @@
         No</label>
       </p>
     </form>
-    <button onclick="calculate()">Calculate</button>
+    <button onclick="main()">Submit</button>
+    <span id="result">
+    </span>
   </body>
 </html>
